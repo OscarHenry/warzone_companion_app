@@ -4,6 +4,6 @@ class FriendPage extends StatelessWidget {
   const FriendPage({super.key});
   @override
   Widget build(BuildContext context) {
-    return Text('Hola Mundo');
+    return Center(child: const Text('FriendPage Comming Soon!'));
   }
 }

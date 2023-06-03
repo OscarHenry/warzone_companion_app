@@ -5,7 +5,7 @@ import 'package:warzone_companion_app/widgets/square_avatar.dart';
 
 class DashboardPage extends StatefulWidget {
   const DashboardPage({super.key});
-  static String get route => '/';
+  static const String route = '/';
 
   @override
   State<DashboardPage> createState() => _DashboardPageState();

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:warzone_companion_app/models/models.dart';
+import 'package:warzone_companion_app/pages/pages.dart';
 
 class ClipSection extends StatefulWidget {
   const ClipSection({super.key});
@@ -85,72 +86,81 @@ class _ClipSectionState extends State<ClipSection> {
 
   Widget buildPost(BuildContext context, index) {
     final post = posts[index];
-    return Card(
-      margin: const EdgeInsets.only(right: 18.0),
-      borderOnForeground: true,
-      clipBehavior: Clip.hardEdge,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(18.0),
-      ),
-      child: Stack(
-        children: [
-          Container(
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image: NetworkImage(post.image),
-                fit: BoxFit.cover,
-              ),
-            ),
-            foregroundDecoration: const BoxDecoration(
-              gradient: LinearGradient(
-                colors: [
-                  Colors.black,
-                  Colors.transparent,
-                ],
-                begin: Alignment.bottomCenter,
-                end: Alignment.topCenter,
-                stops: [0.0, 0.75],
-              ),
-            ),
+    return GestureDetector(
+      onTap: () =>
+          Navigator.pushNamed(context, DetailPage.route, arguments: post),
+      child: Hero(
+        tag: post.image,
+        child: Card(
+          margin: const EdgeInsets.only(right: 18.0),
+          borderOnForeground: true,
+          clipBehavior: Clip.hardEdge,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(18.0),
           ),
-          Padding(
-            padding: const EdgeInsets.only(left: 12.0, right: 12.0, top: 12.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 12.0, vertical: 4.0),
-                  decoration: BoxDecoration(
-                    color: Colors.lightGreenAccent[400],
-                    borderRadius: BorderRadius.circular(50),
-                  ),
-                  child: Text(
-                    '${(post.views / 1000).ceil()}K views',
-                    style: Theme.of(context)
-                        .textTheme
-                        .labelSmall!
-                        .copyWith(color: Colors.black),
+          child: Stack(
+            children: [
+              Container(
+                decoration: BoxDecoration(
+                  color: Colors.grey[900],
+                  image: DecorationImage(
+                    image: NetworkImage(post.image),
+                    fit: BoxFit.cover,
                   ),
                 ),
-                const Spacer(),
-                // Row(
-                //   children: [
-                //     SquareAvatar(
-                //       imageUrl: post.user.image,
-                //     ),
-                //     Expanded(child: Text(post.user.name)),
-                //   ],
-                // ),
-                // const SizedBox(height: 8.0),
-                // SizedBox(
-                //   height: kMinInteractiveDimension,
-                //   child: Text(post.title),
-                // ),
-              ],
-            ),
+                foregroundDecoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [
+                      Colors.black,
+                      Colors.transparent,
+                    ],
+                    begin: Alignment.bottomCenter,
+                    end: Alignment.topCenter,
+                    stops: [0.0, 0.75],
+                  ),
+                ),
+              ),
+              Padding(
+                padding:
+                    const EdgeInsets.only(left: 12.0, right: 12.0, top: 12.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 12.0, vertical: 4.0),
+                      decoration: BoxDecoration(
+                        color: Colors.lightGreenAccent[400],
+                        borderRadius: BorderRadius.circular(50),
+                      ),
+                      child: Text(
+                        '${(post.views / 1000).ceil()}K views',
+                        style: Theme.of(context)
+                            .textTheme
+                            .labelSmall!
+                            .copyWith(color: Colors.black),
+                      ),
+                    ),
+                    const Spacer(),
+                    // Row(
+                    //   children: [
+                    //     SquareAvatar(
+                    //       imageUrl: post.user.image,
+                    //     ),
+                    //     Expanded(child: Text(post.user.name)),
+                    //   ],
+                    // ),
+                    // const SizedBox(height: 8.0),
+                    // SizedBox(
+                    //   height: kMinInteractiveDimension,
+                    //   child: Text(post.title),
+                    // ),
+                  ],
+                ),
+              ),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }
