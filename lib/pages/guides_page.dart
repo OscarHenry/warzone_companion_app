@@ -5,6 +5,6 @@ class GuidesPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-  return Center(child: const Text('GuidesPage Comming Soon!'));
+    return const Center(child: Text('GuidesPage Comming Soon!'));
   }
 }

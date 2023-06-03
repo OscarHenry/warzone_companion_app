@@ -5,6 +5,6 @@ class StorePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(child: const Text('StorePage Comming Soon!'));
+    return const Center(child: Text('StorePage Comming Soon!'));
   }
 }

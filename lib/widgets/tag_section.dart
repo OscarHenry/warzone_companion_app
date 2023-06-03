@@ -12,7 +12,7 @@ class TagSection extends StatefulWidget {
 
 class _TagSectionState extends State<TagSection> {
   final tags = <Tag>[
-    Tag(name: 'all',isSelected: true),
+    Tag(name: 'all', isSelected: true),
     Tag(name: 'hackers'),
     Tag(name: 'ranked'),
     Tag(name: 'Multiplayer'),
